@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Demo interface placeholder</title>
+  <desc id="desc">Wireframe placeholder for a flight booking demo screen.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#eef2ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)" />
+  <rect x="80" y="60" width="1120" height="600" rx="28" fill="#ffffff" stroke="#dbe3ee" stroke-width="4" />
+  <rect x="112" y="96" width="240" height="22" rx="11" fill="#e2e8f0" />
+  <g fill="#f8fafc" stroke="#e2e8f0" stroke-width="2">
+    <rect x="112" y="150" width="250" height="88" rx="14" />
+    <rect x="380" y="150" width="250" height="88" rx="14" />
+    <rect x="648" y="150" width="250" height="88" rx="14" />
+    <rect x="916" y="150" width="252" height="88" rx="14" />
+    <rect x="112" y="266" width="1056" height="112" rx="14" />
+    <rect x="112" y="404" width="680" height="220" rx="14" />
+    <rect x="816" y="404" width="352" height="104" rx="14" />
+    <rect x="816" y="520" width="352" height="104" rx="14" />
+  </g>
+  <text x="640" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#475569">demo UI placeholder</text>
+</svg>
