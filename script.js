@@ -453,7 +453,7 @@ function renderApp() {
           </div>
         </section>
 
-        <section class="section shell problem-hook reveal" id="problem" aria-labelledby="problem-title">
+        <section class="section shell problem-hook reveal section-problem" id="problem" aria-labelledby="problem-title">
           <div class="single-card">
             <p class="eyebrow">${escapeHtml(c.ui.eyebrows.problem)}</p>
             <h2 id="problem-title">${escapeHtml(c.problemHook.question)}</h2>
@@ -461,7 +461,7 @@ function renderApp() {
           </div>
         </section>
 
-        <section class="section shell" id="julia" aria-labelledby="julia-title">
+        <section class="section shell section-persona" id="julia" aria-labelledby="julia-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.persona)}</p>
           <h2 id="julia-title" class="reveal">${escapeHtml(c.persona.title)}</h2>
           <div class="persona-grid">
@@ -554,7 +554,7 @@ function renderApp() {
           </div>
         </section>
 
-        <section class="section shell" id="audit" aria-labelledby="gap-title">
+        <section class="section shell section-divider-title" id="audit" aria-labelledby="gap-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.audit)}</p>
           <h2 id="gap-title" class="reveal">${escapeHtml(c.accessibilityGap.title)}</h2>
           <div class="card-grid">
@@ -565,7 +565,7 @@ function renderApp() {
           </div>
         </section>
 
-        <section class="section shell" id="research" aria-labelledby="insights-title">
+        <section class="section shell section-research" id="research" aria-labelledby="insights-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.research)}</p>
           <h2 id="insights-title" class="reveal">${escapeHtml(c.insights.title)}</h2>
           <div class="stats-grid">
@@ -574,22 +574,22 @@ function renderApp() {
           <p class="source-note reveal">${escapeHtml(c.insights.sourceNote)}</p>
         </section>
 
-        <section class="section shell" id="hmw" aria-labelledby="enable-title">
+        <section class="section shell section-hmw" id="hmw" aria-labelledby="enable-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.behavior)}</p>
           <h2 id="enable-title" class="reveal">${escapeHtml(c.enablement.title)}</h2>
           <div class="enable-card single-card reveal">
-            <div class="enable-block">
+            <div class="enable-block enable-target">
               <h3>${escapeHtml(c.ui.labels.targetBehavior)}</h3>
               <p>${escapeHtml(c.enablement.targetBehavior)}</p>
             </div>
-            <div class="enable-block">
+            <div class="enable-block enable-hmw">
               <h3>${escapeHtml(c.ui.labels.hmw)}</h3>
               <p>${escapeHtml(c.enablement.hmw)}</p>
             </div>
           </div>
         </section>
 
-        <section class="section shell" id="product" aria-labelledby="introducing-title">
+        <section class="section shell section-dark section-product" id="product" aria-labelledby="introducing-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.product)}</p>
           <h2 id="introducing-title" class="reveal">${escapeHtml(c.introducing.title)}</h2>
           <div class="product-grid">
@@ -617,7 +617,7 @@ function renderApp() {
           </div>
         </section>
 
-        <section class="section shell" id="features" aria-labelledby="features-title">
+        <section class="section shell section-dark section-features" id="features" aria-labelledby="features-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.features)}</p>
           <h2 id="features-title" class="reveal">${escapeHtml(c.features.title)}</h2>
           <div class="features-grid">
@@ -626,7 +626,7 @@ function renderApp() {
           <p class="why-line reveal">${escapeHtml(c.features.whyLine)}</p>
         </section>
 
-        <section class="section shell" id="demo" aria-labelledby="demo-title">
+        <section class="section shell section-dark section-demo" id="demo" aria-labelledby="demo-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.demo)}</p>
           <h2 id="demo-title" class="reveal">${escapeHtml(c.demo.title)}</h2>
           <div class="video-card reveal" id="video">
@@ -647,7 +647,7 @@ function renderApp() {
           </div>
         </section>
 
-        <section class="section shell" id="impact" aria-labelledby="impact-title">
+        <section class="section shell section-impact" id="impact" aria-labelledby="impact-title">
           <p class="eyebrow reveal">${escapeHtml(c.ui.eyebrows.impact)}</p>
           <h2 id="impact-title" class="reveal">${escapeHtml(c.impact.title)}</h2>
           <div class="impact-grid">
@@ -663,14 +663,24 @@ function renderApp() {
           <p class="impact-highlight reveal">${escapeHtml(c.impact.placeholderClaim)}</p>
         </section>
 
-        <section class="section shell" id="cta" aria-labelledby="cta-title">
+        <section class="section shell section-dark section-final" id="cta" aria-labelledby="cta-title">
           <div class="final-card reveal">
-            <h2 id="cta-title">${escapeHtml(c.finalCta.headline)}</h2>
-            <p>${escapeHtml(c.finalCta.subtext)}</p>
-            <div class="cta-row">
-              <a class="button button-primary" href="${escapeHtml(c.meta.conceptDeckUrl)}">
-                ${escapeHtml(c.finalCta.button)}
-              </a>
+            <img
+              class="final-device"
+              src="${escapeHtml(c.media.detailRender)}"
+              alt="${escapeHtml(c.media.detailRenderAlt)}"
+              loading="lazy"
+              decoding="async"
+              onerror="this.onerror=null;this.src='${escapeHtml(c.media.productFallback)}';"
+            />
+            <div class="final-copy">
+              <h2 id="cta-title">${escapeHtml(c.finalCta.headline)}</h2>
+              <p>${escapeHtml(c.finalCta.subtext)}</p>
+              <div class="cta-row">
+                <a class="button button-primary" href="${escapeHtml(c.meta.conceptDeckUrl)}">
+                  ${escapeHtml(c.finalCta.button)}
+                </a>
+              </div>
             </div>
           </div>
         </section>
