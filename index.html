@@ -53,6 +53,39 @@
           <a href="#impact">Impact</a>
           <a href="#team">Team</a>
         </nav>
+
+        <div class="a11y-tools">
+          <button
+            class="a11y-toggle"
+            id="a11y-toggle"
+            aria-label="Open accessibility options"
+            aria-expanded="false"
+            aria-controls="a11y-panel"
+          >
+            Accessibility
+          </button>
+
+          <div class="a11y-panel" id="a11y-panel" hidden>
+            <p class="a11y-title">Accessibility</p>
+
+            <label class="a11y-option" for="a11y-contrast">
+              <input id="a11y-contrast" type="checkbox" />
+              <span>High contrast</span>
+            </label>
+
+            <label class="a11y-option" for="a11y-text">
+              <input id="a11y-text" type="checkbox" />
+              <span>Larger text</span>
+            </label>
+
+            <label class="a11y-option" for="a11y-motion">
+              <input id="a11y-motion" type="checkbox" />
+              <span>Reduced motion</span>
+            </label>
+          </div>
+
+          <p class="sr-only" id="a11y-status" aria-live="polite"></p>
+        </div>
       </div>
     </header>
 

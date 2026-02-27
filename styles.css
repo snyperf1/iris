@@ -34,6 +34,56 @@ html {
   scroll-behavior: smooth;
 }
 
+html.user-large-text {
+  font-size: 112.5%;
+}
+
+html.user-high-contrast {
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --text: #0b1220;
+  --text-soft: #1a2436;
+  --text-muted: #2f3e58;
+  --line: rgba(11, 18, 32, 0.5);
+  --line-soft: rgba(11, 18, 32, 0.35);
+  --brand: #0054d1;
+  --brand-strong: #003f9e;
+  --brand-soft: rgba(0, 84, 209, 0.2);
+}
+
+html.user-high-contrast body {
+  background: #f4f3ed;
+}
+
+html.user-high-contrast .section-alt,
+html.user-high-contrast .demo-section {
+  background: #efeee9;
+}
+
+html.user-high-contrast .card,
+html.user-high-contrast .stat-card,
+html.user-high-contrast .feature,
+html.user-high-contrast .impact-card,
+html.user-high-contrast .flow-steps li,
+html.user-high-contrast .hero-meta > div {
+  border-color: var(--line);
+  background: #ffffff;
+}
+
+html.user-reduced-motion *,
+html.user-reduced-motion *::before,
+html.user-reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.user-reduced-motion .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 body {
   margin: 0;
   background:
@@ -69,6 +119,18 @@ video {
   text-decoration: none;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link:focus {
   transform: translateY(0);
 }
@@ -93,11 +155,12 @@ video {
 }
 
 .header-inner {
+  position: relative;
   min-height: 76px;
   display: flex;
   align-items: center;
   gap: 16px;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .brand {
@@ -117,6 +180,7 @@ video {
 }
 
 .site-nav {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -148,6 +212,7 @@ video {
 }
 
 .menu-toggle {
+  margin-left: 8px;
   display: none;
   width: 44px;
   height: 44px;
@@ -165,6 +230,64 @@ video {
   border-radius: 999px;
   background: var(--text);
   margin: 5px 0;
+}
+
+.a11y-tools {
+  position: relative;
+  margin-left: 8px;
+}
+
+.a11y-toggle {
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.a11y-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 150;
+  width: 220px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--shadow-soft);
+  padding: 0.75rem;
+}
+
+.a11y-title {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.a11y-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  font-family: var(--font-main);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.a11y-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand);
 }
 
 .section {
@@ -631,7 +754,23 @@ html.enhanced .reveal.is-visible {
 
 @media (max-width: 760px) {
   .menu-toggle {
+    order: 3;
     display: inline-block;
+  }
+
+  .a11y-tools {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .a11y-toggle {
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.79rem;
+  }
+
+  .a11y-panel {
+    width: min(220px, calc(100vw - 2rem));
   }
 
   .site-nav {
