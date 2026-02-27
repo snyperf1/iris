@@ -607,7 +607,6 @@ li {
   margin: 0;
   padding-left: 0;
   list-style: none;
-  counter-reset: flow;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
@@ -615,21 +614,10 @@ li {
 
 .flow-steps li {
   position: relative;
-  padding: 0.9rem 1rem 0.9rem 2.55rem;
+  padding: 0.9rem 1rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.72);
-}
-
-.flow-steps li::before {
-  counter-increment: flow;
-  content: counter(flow) ".";
-  position: absolute;
-  left: 1rem;
-  top: 0.92rem;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--brand-strong);
 }
 
 .flow-steps p {
