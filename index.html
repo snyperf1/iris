@@ -37,7 +37,7 @@
         <button
           class="menu-toggle"
           id="menu-toggle"
-          aria-label="Toggle menu"
+          aria-label="Open navigation menu"
           aria-expanded="false"
           aria-controls="site-nav"
         >
@@ -56,7 +56,7 @@
       </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <section class="hero section" id="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
@@ -89,13 +89,15 @@
 
           <div class="hero-visual">
             <video
+              data-autoplay-video
               autoplay
               muted
               loop
               playsinline
               preload="metadata"
               poster="./assets/demo-poster.jpg"
-              aria-label="Iris concept animation"
+              aria-hidden="true"
+              tabindex="-1"
             >
               <source src="./assets/demo.mp4" type="video/mp4" />
             </video>

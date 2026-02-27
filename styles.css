@@ -74,7 +74,7 @@ video {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(31, 111, 235, 0.58);
+  outline: 3px solid rgba(13, 88, 196, 0.9);
   outline-offset: 3px;
 }
 
@@ -123,6 +123,9 @@ video {
 }
 
 .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-mono);
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -146,8 +149,8 @@ video {
 
 .menu-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.68);
@@ -261,6 +264,7 @@ li {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   text-decoration: none;
   font-weight: 600;
   border-radius: 999px;
@@ -696,4 +700,51 @@ html.enhanced .reveal.is-visible {
     transform: none;
   }
 
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --surface: #ffffff;
+    --text: #111827;
+    --text-soft: #1f2937;
+    --text-muted: #374151;
+    --line: rgba(17, 24, 39, 0.45);
+    --line-soft: rgba(17, 24, 39, 0.3);
+    --brand: #0b57d0;
+    --brand-strong: #0844a5;
+  }
+
+  .site-header {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-alt,
+  .demo-section {
+    background: #f7f7f5;
+  }
+
+  .card,
+  .stat-card,
+  .feature,
+  .impact-card,
+  .flow-steps li,
+  .hero-meta > div {
+    border-color: var(--line);
+    background: #ffffff;
+  }
+}
+
+@media (forced-colors: active) {
+  .button,
+  .site-nav a,
+  .menu-toggle,
+  .card,
+  .stat-card,
+  .feature,
+  .impact-card,
+  .flow-steps li {
+    forced-color-adjust: auto;
+    border: 1px solid ButtonText;
+  }
 }
