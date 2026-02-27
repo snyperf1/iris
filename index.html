@@ -1,29 +1,344 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="iris: a snap-on phone companion that makes flight booking clearer for people with glaucoma."
+      content="iris is an accessibility-first flight booking concept for travelers with glaucoma and narrowed vision."
     />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f7f3e8" />
     <title>iris | See less. Do more.</title>
     <link rel="icon" type="image/png" href="./assets/iris-icon.png" />
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.cdnfonts.com/css/pp-neue-montreal"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
-    <script defer src="./script.js"></script>
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div id="app">
-      <noscript>
-        <main class="noscript-shell">
-          <h1>iris</h1>
-          <p>
-            This page needs JavaScript enabled to render the explainer content.
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="iris homepage">
+          <img src="./assets/iris-icon.png" alt="iris icon" />
+          <span>iris</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#problem">Problem</a>
+          <a href="#research">Research</a>
+          <a href="#solution">Solution</a>
+          <a href="#impact">Impact</a>
+          <a href="#team">Team</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Designing For The Visually Impaired</p>
+            <h1>
+              See less.<br />
+              Do more.<br />
+              <span>With iris.</span>
+            </h1>
+            <p class="hero-lead">
+              iris is a voice-first booking assistant paired with a high-contrast
+              E-ink companion. It helps travelers with narrowed vision book flights
+              independently without scanning fatigue.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#solution">Explore the concept</a>
+              <a class="button button-ghost" href="#demo">Watch flow</a>
+            </div>
+            <div class="hero-meta">
+              <div>
+                <p class="meta-label">Primary Persona</p>
+                <p>Julia, 53, hospital call center staff with glaucoma</p>
+              </div>
+              <div>
+                <p class="meta-label">Project Team</p>
+                <p>Team 2 - MD8215 CA1</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="./assets/demo-poster.jpg"
+              aria-label="Iris concept animation"
+            >
+              <source src="./assets/demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt reveal" id="problem">
+        <div class="container">
+          <p class="eyebrow">Problem Statement</p>
+          <h2>
+            Does more information help us see better,
+            <span>or does it just get in the way?</span>
+          </h2>
+          <p class="section-lead">
+            Julia can only see narrow regions due to glaucoma. Dense airline
+            interfaces force exhaustive scanning, increasing eye fatigue, stress,
+            and fear of costly mistakes.
           </p>
-        </main>
-      </noscript>
-    </div>
+
+          <div class="gap-grid">
+            <article class="card">
+              <h3>The Accessibility Gap</h3>
+              <p>
+                Singapore Airlines booking flows include low-contrast labels,
+                compact airport rows, dense calendar grids, and subtle color cues
+                that are difficult to parse in a 15-degree visual field.
+              </p>
+              <p class="tagline">WCAG issues found: 1.4.3, 1.4.11, 2.4.6, 2.5.8, 1.4.1</p>
+            </article>
+
+            <article class="card">
+              <h3>What Julia needs</h3>
+              <ul>
+                <li>Clear, high-contrast key information</li>
+                <li>Reduced scanning across wide layouts</li>
+                <li>Strong confirmation for high-stakes actions</li>
+                <li>A way to stay oriented at every step</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="research">
+        <div class="container">
+          <p class="eyebrow">Research Insights</p>
+          <h2>Why current booking flows break down</h2>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <p class="stat-value">25%</p>
+              <p class="stat-body">
+                More saccadic eye movements are needed in glaucoma to piece together
+                a visual scene, increasing effort and fatigue.
+              </p>
+            </article>
+
+            <article class="stat-card">
+              <p class="stat-value">70%</p>
+              <p class="stat-body">
+                Reported glare disability in glaucoma patients, where bright screens
+                can wash out remaining vision.
+              </p>
+            </article>
+
+            <article class="stat-card">
+              <p class="stat-value">40%</p>
+              <p class="stat-body">
+                Reaction time can increase when processing low-contrast or complex
+                visuals, raising cognitive load.
+              </p>
+            </article>
+          </div>
+
+          <div class="problem-spaces">
+            <article>
+              <h3>Problem Space 1</h3>
+              <p>Improve perceivability of key information while reducing strain.</p>
+            </article>
+            <article>
+              <h3>Problem Space 2</h3>
+              <p>Communicate progress and options without extensive scanning.</p>
+            </article>
+            <article>
+              <h3>Problem Space 3</h3>
+              <p>Replace booking anxiety with confidence and error safety.</p>
+            </article>
+          </div>
+
+          <blockquote class="hmw">
+            How might we recreate a booking experience for Julia, who has a narrowed
+            field of vision, to book flights independently without extensive scanning
+            fatigue?
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="section section-alt reveal" id="solution">
+        <div class="container">
+          <p class="eyebrow">Introducing iris</p>
+          <h2>A booking system built for confidence, not overload</h2>
+          <p class="section-lead">
+            iris combines contextual voice guidance, persistent low-strain summaries,
+            and deliberate interaction checkpoints to reduce cognitive friction and
+            prevent high-cost errors.
+          </p>
+
+          <div class="solution-layout">
+            <img
+              src="./assets/product-front.png"
+              alt="Front product render of iris concept device"
+              class="solution-image"
+            />
+
+            <div class="feature-grid">
+              <article class="feature">
+                <h3>ContextVoice</h3>
+                <p>
+                  Curates A/B choices and relevant next steps instead of reading every
+                  UI element, so Julia can decide faster with less strain.
+                </p>
+              </article>
+
+              <article class="feature">
+                <h3>InkView</h3>
+                <p>
+                  A high-contrast E-ink summary that mirrors confirmed choices,
+                  turning fleeting voice interactions into persistent anchors.
+                </p>
+              </article>
+
+              <article class="feature">
+                <h3>ProgressBar</h3>
+                <p>
+                  Gives immediate orientation when Julia backtracks or edits choices,
+                  strengthening error management and trust.
+                </p>
+              </article>
+
+              <article class="feature">
+                <h3>MagSnap</h3>
+                <p>
+                  A snap-on hardware control where the physical button is reserved for
+                  high-stakes actions like payment confirmation.
+                </p>
+              </article>
+
+              <article class="feature feature-focus">
+                <h3>FocusFrame</h3>
+                <p>
+                  Future calibration mode that scales interface framing to the user's
+                  visible window, supporting long-term independence as vision narrows.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal demo-section" id="demo">
+        <div class="container demo-content">
+          <p class="eyebrow">Interaction Flow</p>
+          <h2>How iris guides a booking session</h2>
+
+          <div class="demo-grid">
+            <ol class="flow-steps">
+              <li>
+                <strong>Destination and dates</strong>
+                <p>Julia says her route and dates. The system confirms and stores the summary.</p>
+              </li>
+              <li>
+                <strong>Compare options</strong>
+                <p>ContextVoice explains trade-offs one by one: lower price vs shorter layover.</p>
+              </li>
+              <li>
+                <strong>Confirm assistance and seat</strong>
+                <p>Special assistance and seat requests are repeated clearly before confirmation.</p>
+              </li>
+              <li>
+                <strong>Finalize with control</strong>
+                <p>Payment only proceeds after explicit final confirmation and persistent summary review.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt reveal" id="impact">
+        <div class="container">
+          <p class="eyebrow">Outcome</p>
+          <h2>From exhaustion to empowerment</h2>
+
+          <div class="impact-grid">
+            <article class="impact-card">
+              <p class="impact-label">Before</p>
+              <p class="impact-value">40+ mins</p>
+              <p>
+                Long scanning on dense booking screens caused fatigue and fear of
+                irreversible mistakes.
+              </p>
+            </article>
+
+            <article class="impact-card">
+              <p class="impact-label">After</p>
+              <p class="impact-value">50% shorter</p>
+              <p>
+                Shorter sessions by reducing saccadic stress and search overhead,
+                with clearer checkpoints and lower uncertainty.
+              </p>
+            </article>
+          </div>
+
+          <p class="impact-quote">
+            "We didn't just redesign a booking flow; we reclaimed a field of vision."
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="team">
+        <div class="container team-panel">
+          <div>
+            <p class="eyebrow">Team iris</p>
+            <h2>Built by Team 2</h2>
+            <p>
+              Nusrah Syazana (P2440668), Shrinithi (P2407162), Jingqi (P2433817),
+              Harur Isla (P2435950), and Myat (P2300319).
+            </p>
+            <p>
+              This project was developed as an accessibility design concept focused
+              on independent travel booking for users with glaucoma.
+            </p>
+          </div>
+          <a class="button button-primary" href="#top">Back to top</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>iris - Accessibility-first booking concept</p>
+        <p>See less. Do more.</p>
+      </div>
+    </footer>
   </body>
 </html>
