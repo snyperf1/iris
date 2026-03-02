@@ -7,6 +7,15 @@ const siteNav = document.getElementById("site-nav");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
 const sections = Array.from(document.querySelectorAll("main section[id]"));
+const siteHeader = document.querySelector(".site-header");
+const navSectionIds = navLinks
+  .map((link) => link.getAttribute("href")?.replace("#", "").trim())
+  .filter((id) => Boolean(id));
+const sectionById = new Map(sections.map((section) => [section.id, section]));
+const trackedSections = navSectionIds
+  .map((sectionId) => sectionById.get(sectionId))
+  .filter((section) => Boolean(section));
+let scrollSpyTicking = false;
 const skipLink = document.querySelector(".skip-link");
 const mainContent = document.getElementById("main-content");
 
@@ -186,6 +195,56 @@ function updateActiveNav(sectionId) {
   });
 }
 
+function getScrollSpyOffset() {
+  if (siteHeader instanceof HTMLElement) {
+    return siteHeader.offsetHeight + 16;
+  }
+
+  return 120;
+}
+
+function getActiveSectionFromScroll() {
+  if (trackedSections.length === 0) {
+    return "";
+  }
+
+  const scrollMarker = window.scrollY + getScrollSpyOffset();
+  let activeSectionId = "";
+
+  trackedSections.forEach((section) => {
+    if (section.offsetTop <= scrollMarker) {
+      activeSectionId = section.id;
+    }
+  });
+
+  const lastTrackedSection = trackedSections[trackedSections.length - 1];
+  const nearBottom =
+    window.innerHeight + window.scrollY >=
+    document.documentElement.scrollHeight - 2;
+
+  if (nearBottom && lastTrackedSection) {
+    return lastTrackedSection.id;
+  }
+
+  return activeSectionId;
+}
+
+function syncActiveNavWithScroll() {
+  updateActiveNav(getActiveSectionFromScroll());
+}
+
+function requestScrollSpySync() {
+  if (scrollSpyTicking) {
+    return;
+  }
+
+  scrollSpyTicking = true;
+  requestAnimationFrame(() => {
+    scrollSpyTicking = false;
+    syncActiveNavWithScroll();
+  });
+}
+
 loadStoredModes();
 syncMotionPreference();
 
@@ -319,31 +378,16 @@ if ("IntersectionObserver" in window) {
 
     revealItems.forEach((item) => revealObserver.observe(item));
   }
-
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        const sectionId = entry.target.getAttribute("id");
-        if (sectionId) {
-          updateActiveNav(sectionId);
-        }
-      });
-    },
-    {
-      threshold: 0.38,
-      rootMargin: "-12% 0px -48% 0px",
-    }
-  );
-
-  sections.forEach((section) => sectionObserver.observe(section));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
 if (window.location.hash) {
   updateActiveNav(window.location.hash.replace("#", ""));
+}
+
+if (trackedSections.length > 0) {
+  window.addEventListener("scroll", requestScrollSpySync, { passive: true });
+  window.addEventListener("resize", requestScrollSpySync);
+  requestAnimationFrame(syncActiveNavWithScroll);
 }
